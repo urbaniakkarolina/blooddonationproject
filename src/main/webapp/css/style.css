@@ -234,12 +234,12 @@ footer {
 }
 
 
-a .link {
+a {
 	color: #333;
 	text-decoration: none;
 }
 
-a .link:hover {
+a:hover {
 	color: rgba(140, 34, 34, 0.959);
 	cursor: pointer;
 	transition: color 0.3s;
