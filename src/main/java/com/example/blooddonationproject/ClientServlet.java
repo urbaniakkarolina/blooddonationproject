@@ -43,6 +43,11 @@ public class ClientServlet extends HttpServlet {
         super.init(config);
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
             dbUtil = new DatabaseUtilClient(dbUrl);
         } catch (Exception e) {
             throw new ServletException(e);
@@ -86,7 +91,7 @@ public class ClientServlet extends HttpServlet {
         request.setAttribute("FACILITIES_LIST", facilityList);
 
         // wyslanie danych do JSP
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/client_view.jsp");
         dispatcher.forward(request, response);
     }
 }
