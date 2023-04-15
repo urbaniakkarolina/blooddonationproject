@@ -1,0 +1,257 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-size: 1.6rem;
+}
+
+/* -------------------------------- */
+.nav2 {
+	height: 50px;
+	background-color: #333;
+	text-align: center;
+	/* żeby linki były wyśrodkowane na środku strony  */
+	line-height: 50px;
+	/* wyśrodkowanie tekstu w osi OY - dziala tylko jak znamy wysokosc elementu oraz gdy mamy tekst w 1 linijce  */
+	font-size: 0;
+}
+
+.nav3 {
+	position: absolute;
+	z-index: -5;
+	top: 0%;
+	width: 100%;
+	height: 47px;
+	background-color: rgba(140, 34, 34, 1);
+	text-align: center;
+	line-height: 50px;
+}
+
+.nav2-item {
+	display: inline-block;
+	padding: 0 50px;
+}
+
+.nav2-item a {
+	color: whitesmoke;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: 2px;
+	transition: color 0.3s;
+}
+
+.nav2-item a:hover {
+	color: rgba(245, 183, 199, 0.85);
+}
+
+/* header  */
+.header-img {
+	margin-top: 35px;
+	position: relative;
+	height: 350px;
+	background-image: url('../img/blood.jpg');
+	background-size: cover;
+	background-position: 0 50%;
+}
+
+.header-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #b7bcd1;
+	z-index: 1;
+	font-size: 24px;
+}
+
+.header-text h1 {
+	margin-bottom: 10px;
+	letter-spacing: 2px;
+	font-size: 46px;
+	font-family: 'Gloock';
+	color: rgb(218, 234, 253);
+}
+
+.header-bg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 3, 27, 0.5);
+}
+
+/* ---------------------------------- */
+
+.hero-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.blood-color {
+	color: rgba(140, 34, 34, 1);
+}
+
+.navbar-brand {
+	font-size: 2rem;
+	color: whitesmoke;
+}
+
+.navbar,
+.navbar-expand-lg,
+.navbar-light,
+.bg-light,
+.py-2,
+.fixed-top {
+	background-color: #333;
+}
+
+.nav-link {
+	margin-left: 40px;
+	margin-right: 40px;
+	transition: color 0.3s;
+}
+
+.bg-light {
+	--bs-bg-opacity: 1;
+	background-color: #333;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: whitesmoke !important;
+	transition: color 0.3s;
+}
+
+.navbar-light .navbar-brand {
+	color: whitesmoke !important;
+}
+
+.btn-outline-success {
+	color: whitesmoke;
+	border-color: whitesmoke;
+}
+
+.nav-link:hover {
+	color: rgba(245, 183, 199, 0.85);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color: rgba(245, 183, 199, 0.85) !important;
+}
+
+.bloodstate-box {
+	font-size: 20px;
+}
+
+.bloodstate-box i {
+	font-size: 40px;
+}
+
+.display-3 {
+	font-family: 'DM Serif Display';
+	font-weight: lighter;
+	font-size: 34px;
+	margin-top: 40px !important;
+}
+
+.city {
+	font-family: 'Helvetica';
+	font-size: 30px;
+	font-weight: lighter;
+}
+
+.day {
+	margin: 0 !important;
+	font-size: 24px;
+	color: #3b404b8a;
+}
+
+.image-about {
+	width: 30%;
+	height: 30%;
+	transform: -50%;
+}
+
+.aboutus {
+	font-size: 2rem;
+}
+
+.dropdown-menu {
+	font-size: 1.5rem;
+}
+
+.map iframe {
+	width: 94%;
+	min-height: 460px;
+	margin: 40px;
+}
+
+.blood-stations-map {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+/* footer  */
+footer {
+	height: 80px;
+	line-height: 80px;
+	/* chcemy wyśrodkowac tekst na osi OY;
+	
+	uwaga na samym dole pokazuje nam sie w footerze taki bialy pasek wlasnie przez line-height, ale i tak zwykle do wysrodkowywania elementow uzywa sie flexboxa wiec dont worry*/
+	font-size: 20px;
+	text-align: center;
+	color: #ddd;
+	background-color: #333;
+}
+
+.icon-box {
+	margin-left: 20px;
+	/* aby tekst byl oddalony od ikonek  */
+}
+
+.icon-box a {
+	margin: 0 5px;
+	font-size: 30px;
+	color: #ddd;
+	transition: color 0.3s;
+}
+
+.icon-box a:hover {
+	color: rgba(245, 183, 199, 0.85);
+}
+
+
+a .link {
+	color: #333;
+	text-decoration: none;
+}
+
+a .link:hover {
+	color: rgba(140, 34, 34, 0.959);
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+table {
+	counter-reset: tableCount;
+}
+
+
+/*autoinkrementacja ID w tabeli*/
+.counterCell:before {
+	content: counter(tableCount);
+	counter-increment: tableCount;
+}

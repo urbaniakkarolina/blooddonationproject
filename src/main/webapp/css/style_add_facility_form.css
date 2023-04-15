@@ -1,0 +1,255 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-size: 1.6rem;
+	background-color: white;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+.new-station-form {
+	background-color: rgba(255, 255, 255, 0.13);
+	border-radius: 10px;
+	backdrop-filter: blur(10px);
+	border: 2px solid rgba(255, 255, 255, 0.441);
+	box-shadow: 0 0 10px rgba(181, 180, 189, 0.6);
+	padding: 50px 35px;
+}
+
+.data {
+	border-radius: 10px;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.441);
+	box-shadow: 0 0 10px rgba(181, 180, 189, 0.6);
+	margin-top: 30px;
+	height: 425px;
+}
+
+.form {
+	font-size: 24px;
+	padding-bottom: 20px;
+	text-align: center;
+	color: black;
+}
+p {
+	color: #0f0e0ed1;
+}
+
+.blood-color {
+	color: rgba(140, 34, 34, 1);
+}
+
+.navbar-brand {
+	font-size: 2rem;
+	color: whitesmoke;
+}
+
+.navbar,
+.navbar-expand-lg,
+.navbar-light,
+.bg-light,
+.py-2,
+.fixed-top {
+	background-color: #333;
+}
+
+.nav-link {
+	margin-left: 40px;
+	margin-right: 40px;
+	transition: color 0.3s;
+}
+
+.bg-light {
+	--bs-bg-opacity: 1;
+	background-color: #333;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: whitesmoke !important;
+	transition: color 0.3s;
+}
+
+.navbar-light .navbar-brand {
+	color: whitesmoke !important;
+}
+
+.btn-outline-success {
+	color: whitesmoke;
+	border-color: whitesmoke;
+}
+
+.nav-link:hover {
+	color: rgba(245, 183, 199, 0.85);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color: rgba(245, 183, 199, 0.85) !important;
+}
+
+.dropdown-menu {
+	font-size: 1.5rem;
+}
+
+.display-3 {
+	font-family: 'Gloock';
+	font-size: 34px;
+	margin-top: 60px !important;
+}
+
+.display-4 {
+	font-family: 'Gloock';
+	font-size: 34px;
+	margin-top: 60px !important;
+}
+
+.contact input {
+	font-size: 1.6rem;
+}
+
+.contact-logo {
+	font-size: 2rem;
+}
+
+.new-station-form .btn {
+	padding: 0.3em 0.8em;
+	font-size: 1.8rem;
+	background-color: rgba(140, 34, 34, 0.959);
+	color: whitesmoke;
+}
+
+.contact-map iframe {
+	width: 100%;
+	min-height: 500px;
+}
+
+#heart {
+	position: absolute;
+	top: 10%;
+	right: 32%;
+	border: 0;
+	width: 7%;
+	height: auto;
+}
+
+#heart2 {
+	position: fixed;
+	bottom: 5%;
+	left: 4.8%;
+	border: 0;
+	width: 7%;
+	height: auto;
+}
+
+#drop1 {
+	position: fixed;
+	top: 10%;
+	left: 7.5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+
+#drop2 {
+	position: fixed;
+	top: 20%;
+	left: 12%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+#drop3 {
+	position: fixed;
+	top: 30%;
+	left: 7.5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+#drop4 {
+	position: fixed;
+	top: 42%;
+	left: 5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+#drop5 {
+	position: fixed;
+	top: 55%;
+	left: 7.5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+#drop6 {
+	position: fixed;
+	top: 20%;
+	left: 3.5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+
+#drop7 {
+	position: fixed;
+	top: 42%;
+	left: 10.5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+
+#drop8 {
+	position: fixed;
+	bottom: 26%;
+	left: 5%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+
+#drop9 {
+	position: fixed;
+	bottom: 26%;
+	left: 10%;
+	border: 0;
+	width: 1.7%;
+	height: auto;
+}
+
+
+i.bi.bi-pencil-square, i.bi.bi-x-lg {
+	color: #333;
+}
+
+i.bi.bi-pencil-square:hover, i.bi.bi-x-lg:hover{
+	color: rgb(187, 40, 40);
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+a .link {
+	color: #333;
+	text-decoration: none;
+}
+
+a .link:hover {
+	color: rgba(140, 34, 34, 0.959);
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+
+
+
+
+
