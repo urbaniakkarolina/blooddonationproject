@@ -130,187 +130,169 @@
 
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                <c:set var="counter" value="0"/>
+                <c:forEach items="${BLOOD_BANK_STOCKS}">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="${counter}" class="${counter == 0 ? 'active' : ''}"
+                            aria-current="${counter == 0 ? 'true' : 'false'}" aria-label="Slide ${counter}"></button>
+                    <c:set var="counter" value="${counter + 1}"/>
+                </c:forEach>
             </div>
+
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <div class="container py-5 bloodstate-boxes">
-                        <div class="row text-center">
-                            <div class="container ">
-                                <p class="city display-3 text-center">Wrocław</p>
-                            </div>
-                            <h2 class="types_blood_plus col-6 col-md-6 p-4">Krew RhD-
-                            </h2>
-                            <h2 class="types_blood_minus col-6 col-md-6 p-4">Krew RhD+
-                            </h2>
+                <c:set var="counter" value="0"/>
+                <c:forEach items="${BLOOD_BANK_STOCKS}" var="tmpBloodBankStock">
+                    <c:set var="counter" value="${counter + 1}"/>
+                    <c:set var="city" value="${tmpBloodBankStock.getFacility().getRckikName()}"/>
+                    <c:set var="bloodTypes" value="${tmpBloodBankStock.bloodTypes}"/>
+                    <c:set var="zeroMinus" value="${bloodTypes.get('ZERO-').getAmountOfBlood()}"/>
+                    <c:set var="zeroPlus" value="${bloodTypes.get('ZERO+').getAmountOfBlood()}"/>
+                    <c:set var="aMinus" value="${bloodTypes.get('A-').getAmountOfBlood()}"/>
+                    <c:set var="aPlus" value="${bloodTypes.get('A+').getAmountOfBlood()}"/>
+                    <c:set var="bMinus" value="${bloodTypes.get('B-').getAmountOfBlood()}"/>
+                    <c:set var="bPlus" value="${bloodTypes.get('B+').getAmountOfBlood()}"/>
+                    <c:set var="abMinus" value="${bloodTypes.get('AB-').getAmountOfBlood()}"/>
+                    <c:set var="abPlus" value="${bloodTypes.get('AB+').getAmountOfBlood()}"/>
 
-
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet blood-color"></i> 0 RhD-
+                    <div class="carousel-item ${counter == 1 ? 'active' : ''}">
+                        <div class="container py-5 bloodstate-boxes">
+                            <div class="row text-center">
+                                <div class="container ">
+                                    <p class="city display-3 text-center"><c:out value="${city}"/></p>
+                                </div>
+                                <h2 class="types_blood_plus col-6 col-md-6 p-4">Krew RhD-</h2>
+                                <h2 class="types_blood_minus col-6 col-md-6 p-4">Krew RhD+</h2>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
+                                        <c:choose>
+                                            <c:when test="${zeroMinus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${zeroMinus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        0 RhD-
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
+                                        <c:choose>
+                                            <c:when test="${aMinus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${aMinus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        A RhD-
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
+                                        <c:choose>
+                                            <c:when test="${zeroPlus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${zeroPlus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        0 RhD+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
+                                        <c:choose>
+                                            <c:when test="${aPlus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${aPlus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        A RhD+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
+                                        <c:choose>
+                                            <c:when test="${bMinus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${bMinus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        B RhD-
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
+                                        <c:choose>
+                                            <c:when test="${abMinus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${abMinus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        AB RhD-
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
+                                        <c:choose>
+                                            <c:when test="${bPlus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${bPlus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        B RhD+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
+                                        <c:choose>
+                                            <c:when test="${abPlus < 50}">
+                                                <i class="bi bi-droplet blood-color"></i>
+                                            </c:when>
+                                            <c:when test="${abPlus < 500}">
+                                                <i class="bi bi-droplet-half blood-color"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-droplet-fill blood-color"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        AB RhD+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> A RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-half blood-color"></i> 0 RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> A RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> B RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> AB RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet"></i> B RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> AB RhD+
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <div class="container py-5 bloodstate-boxes">
-                        <div class="row text-center">
-                            <div class="container">
-                                <p class="city display-3 text-center">Warszawa</p>
-                            </div>
-                            <h2 class="types_blood_plus col-6 col-md-6 p-4">Krew RhD-
-                            </h2>
-                            <h2 class="types_blood_minus col-6 col-md-6 p-4">Krew RhD+
-                            </h2>
-
-
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-half blood-color"></i> 0 RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> A RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> 0 RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> A RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> B RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-fill"></i> AB RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-fill"></i> B RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-fill"></i> AB RhD+
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container py-5 bloodstate-boxes">
-                        <div class="row text-center">
-                            <div class="container">
-                                <p class="city display-3 text-center">Kraków</p>
-                            </div>
-                            <h2 class="types_blood_plus col-6 col-md-6 p-4">Krew RhD-
-                            </h2>
-                            <h2 class="types_blood_minus col-6 col-md-6 p-4">Krew RhD+
-                            </h2>
-
-
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-half blood-color"></i> 0 RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-half blood-color"></i> A RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> 0 RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-dark">
-                                    <i class="bi bi-droplet-fill blood-color"></i> A RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet"></i> B RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> AB RhD-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-half"></i> B RhD+
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="bloodstate-box m-3 p-4 p-lg-5 border text-light bg-dark">
-                                    <i class="bi bi-droplet-fill"></i> AB RhD+
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
+                </c:forEach>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                     data-bs-slide="prev">

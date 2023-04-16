@@ -76,6 +76,7 @@ public class ClientServlet extends HttpServlet {
 
         try {
 
+            request.setAttribute("BLOOD_BANK_STOCKS", dbUtil.getBloodBankStocks());
             // lista obiektow (MVC)
             listFacilities(request, response);
 

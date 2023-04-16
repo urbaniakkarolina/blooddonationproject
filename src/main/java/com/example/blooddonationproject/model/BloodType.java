@@ -4,14 +4,20 @@ public class BloodType {
     private int bloodId;
     private BasicBloodType basicBloodType;
     private String rhD;
+    private int amountOfBlood;
 
     public BloodType() {
     }
 
-    public BloodType(int bloodId, BasicBloodType basicBloodType, String rhD) {
+    public BloodType(int bloodId, BasicBloodType basicBloodType, String rhD, int amountOfBlood) {
         this.bloodId = bloodId;
         this.basicBloodType = basicBloodType;
         this.rhD = rhD;
+        this.amountOfBlood = amountOfBlood;
+    }
+
+    public String getBloodType() {
+        return basicBloodType + rhD;
     }
 
     public int getBloodId() {
@@ -36,5 +42,13 @@ public class BloodType {
 
     public void setRhD(String rhD) {
         this.rhD = rhD;
+    }
+
+    public int getAmountOfBlood() {
+        return amountOfBlood;
+    }
+
+    public void setAmountOfBlood(int amountOfBlood) {
+        this.amountOfBlood = amountOfBlood;
     }
 }

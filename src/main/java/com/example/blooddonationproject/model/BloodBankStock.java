@@ -1,39 +1,32 @@
 package com.example.blooddonationproject.model;
+
+import java.util.HashMap;
+
 public class BloodBankStock {
-    private int facilityId;
-    private int bloodId;
-    private int amountOfBlood;
+    private Facility facility;
+    private HashMap<String, BloodType> bloodTypes;
 
     public BloodBankStock() {
     }
 
-    public BloodBankStock(int facilityId, int bloodId, int amountOfBlood) {
-        this.facilityId = facilityId;
-        this.bloodId = bloodId;
-        this.amountOfBlood = amountOfBlood;
+    public BloodBankStock(Facility facility, HashMap<String, BloodType> bloodTypes) {
+        this.facility = facility;
+        this.bloodTypes = bloodTypes;
     }
 
-    public int getFacilityId() {
-        return facilityId;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setFacilityId(int facilityId) {
-        this.facilityId = facilityId;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
-    public int getBloodId() {
-        return bloodId;
+    public HashMap<String, BloodType> getBloodTypes() {
+        return bloodTypes;
     }
 
-    public void setBloodId(int bloodId) {
-        this.bloodId = bloodId;
-    }
-
-    public int getAmountOfBlood() {
-        return amountOfBlood;
-    }
-
-    public void setAmountOfBlood(int amountOfBlood) {
-        this.amountOfBlood = amountOfBlood;
+    public void setBloodTypes(HashMap<String, BloodType> bloodTypes) {
+        this.bloodTypes = bloodTypes;
     }
 }
