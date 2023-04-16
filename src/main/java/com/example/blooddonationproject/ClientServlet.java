@@ -1,5 +1,6 @@
 package com.example.blooddonationproject;
 
+import com.example.blooddonationproject.model.BloodBankStock;
 import com.example.blooddonationproject.model.Facility;
 
 import javax.naming.Context;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/ClientServlet")
@@ -79,7 +81,6 @@ public class ClientServlet extends HttpServlet {
             String command = request.getParameter("command");
             command = command == null ? "" : command;
             request.setAttribute("BLOOD_BANK_STOCKS", dbUtil.getBloodBankStocks());
-
             switch (command) {
                 case "SEARCH":
                     searchForFacility(request, response);

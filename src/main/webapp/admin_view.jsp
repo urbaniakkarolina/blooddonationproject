@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="update_blood_bank.html">Aktualizuj dane</a>
+                        <a class="nav-link active" aria-current="page" href="update_blood_bank.jsp">Aktualizuj dane</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
