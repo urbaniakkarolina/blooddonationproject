@@ -74,9 +74,10 @@
 
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <form class="d-flex" action="AdminServlet">
+          <input class="form-control me-2" type="search" placeholder="Search" name="searchTerm" aria-label="Search">
+          <input type="hidden" name="command" value="SEARCH">
+          <button class="btn btn-outline-secondary " type="submit">Search</button>
 
         </form>
 

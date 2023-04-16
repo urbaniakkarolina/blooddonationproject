@@ -77,7 +77,7 @@ public class AdminServlet extends HttpServlet {
         try {
             // odczytanie zadania
             String command = request.getParameter("command");
-
+            command = command == null ? "" : command;
             request.setAttribute("BLOOD_BANK_STOCKS", dbUtil.getBloodBankStocks());
 
             switch (command) {
@@ -237,4 +237,3 @@ public class AdminServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-

@@ -64,7 +64,7 @@
                     <input type="hidden" name="command" value="SEARCH">
                     <button class="btn btn-outline-secondary " type="submit">Search</button>
 
-                </form>\
+                </form>
 
             </div>
         </div>
