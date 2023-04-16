@@ -57,25 +57,26 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="update-data.html">Aktualizuj dane</a>
+            <a class="nav-link active" aria-current="page" href="update_blood_bank.html">Aktualizuj dane</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="logging.html" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">
-              Zaloguj się
+              Konto
             </a>
+
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="logging.html">Honorowy Dawca Krwi</a></li>
+              <li><a class="dropdown-item" href=ClientServlet>Wyloguj się</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="logging.html">Administrator</a></li>
             </ul>
+
           </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary " type="submit">Search</button>
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
 
         </form>
 
@@ -132,13 +133,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-4">
-                    <label>Nazwa</label>
+                    <label>Nazwa RCKiK</label>
                     <input type="text" class="form-control" name="nameInput">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-4">
-                    <label>Adres</label>
+                    <label>Adres (ulica i nr budynku)</label>
                     <input type="text" class="form-control" name="addressInput">
                   </div>
                 </div>
@@ -192,7 +193,7 @@
         <table class="table table-striped">
           <thead>
           <tr>
-            <th scope="col">Nr</th>
+            <th scope="col">ID</th>
             <th scope="col">RCKiK</th>
             <th scope="col">Adres</th>
             <th scope="col">Miejscowość</th>
@@ -223,7 +224,21 @@
               <td>${tmpFacility.city} ${tmpFacility.postCode}</td>
               <td>${tmpFacility.phoneNumber}</td>
               <td>
-                <a class="link" href="${tmpFacility.website}">${tmpFacility.website}</a>
+                <a class="link" id="website" onmouseover="mouseOver()" onmouseout="mouseOut()" style="color: #333333; text-decoration: none" href="${tmpFacility.website}" onmouseover="change(this)">${tmpFacility.website}
+                </a>
+                <script type="text/javascript" >
+                  function mouseOver() {
+                    document.getElementById("website").style.color = "rgba(140, 34, 34, 0.959)";
+                  }
+
+                  function mouseOut() {
+                    document.getElementById("website").style.color = "#333";
+                  }
+                  // function change (element) {
+                  //     var style = element.style;
+                  //     style.color = 'rgba(140, 34, 34, 0.959)';
+                  // }
+                </script>
               </td>
               <td>
                 <a href="${updateLink}">

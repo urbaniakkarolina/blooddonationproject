@@ -81,7 +81,7 @@
     <div class="nav3"></div>
     <div class="nav2">
         <ul>
-            <li class="nav2-item"><a href="index.html">Strona główna</a></li>
+            <li class="nav2-item"><a href=ClientServlet>Strona główna</a></li>
         </ul>
     </div>
 
@@ -371,7 +371,21 @@
                             <td>${tmpFacility.city} ${tmpFacility.postCode}</td>
                             <td>${tmpFacility.phoneNumber}</td>
                             <td>
-                                <a class="link" href="${tmpFacility.website}">${tmpFacility.website}</a>
+                                <a class="link" id="website" onmouseover="mouseOver()" onmouseout="mouseOut()" style="color: #333333; text-decoration: none" href="${tmpFacility.website}" onmouseover="change(this)">${tmpFacility.website}
+                                </a>
+                                <script type="text/javascript" >
+                                    function mouseOver() {
+                                        document.getElementById("website").style.color = "rgba(140, 34, 34, 0.959)";
+                                    }
+
+                                    function mouseOut() {
+                                        document.getElementById("website").style.color = "#333";
+                                    }
+                                    // function change (element) {
+                                    //     var style = element.style;
+                                    //     style.color = 'rgba(140, 34, 34, 0.959)';
+                                    // }
+                                </script>
                             </td>
                         </tr>
 

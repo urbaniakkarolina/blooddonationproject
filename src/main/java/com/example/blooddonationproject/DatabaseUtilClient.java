@@ -35,7 +35,6 @@ public class DatabaseUtilClient extends DatabaseUtil{
             );
             foundFacilities.add(facility);
         }
-
         return foundFacilities;
     }
 

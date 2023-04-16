@@ -42,11 +42,7 @@
                 <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <c:url var="homeListLink" value="AdminServlet">
-                            <c:param name="command" value="HOME_LIST"></c:param>
-                            <c:param name="facilityID" value="${tmpFacility.id}"></c:param>
-                        </c:url>
-                        <a class="nav-link active" aria-current="page" href="${homeListLink}">Home</a>
+                        <a class="nav-link active" aria-current="page" href=AdminServlet>Home</a>
                     </li>
                     <li class="nav-item">
                         <c:url var="listLink" value="AdminServlet">
@@ -58,19 +54,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="update-data.html">Aktualizuj dane</a>
+                        <a class="nav-link active" aria-current="page" href="update_blood_bank.html">Aktualizuj dane</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="logging.html" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Zaloguj się
+                            Konto
                         </a>
+
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="logging.html">Honorowy Dawca Krwi</a></li>
+                            <li><a class="dropdown-item" href=ClientServlet>Wyloguj się</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="logging.html">Administrator</a></li>
                         </ul>
                     </li>
                 </ul>

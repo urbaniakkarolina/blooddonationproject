@@ -85,6 +85,46 @@ public class DatabaseUtilAdmin extends DatabaseUtil{
         }
     }
 
+    public Facility getFacility(String id) throws Exception {
+
+        Facility facility = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // konwersja id na liczbe
+            int facilityID = Integer.parseInt(id);
+            connection = DriverManager.getConnection(url, name, password);
+            String query = "select * from facilities where id=?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, facilityID);
+
+            // wykonanie zapytania
+            resultSet = statement.executeQuery();
+
+            // przetworzenie wyniku zapytania
+            if (resultSet.next()) {
+                String rckikName = resultSet.getString("rckik_name");
+                String address = resultSet.getString("address");
+                String postCode = resultSet.getString("post_code");
+                String city = resultSet.getString("city");
+                String phoneNumber = resultSet.getString("phone_number");
+                String website = resultSet.getString("website");
+
+                // utworzenie obiektu
+                facility = new Facility(facilityID, rckikName, address, postCode, city, phoneNumber, website);
+            } else {
+                throw new Exception("Could not find phone with id " + facilityID);
+            }
+            return facility;
+
+        } finally {
+
+            close(connection, statement, resultSet);
+        }
+    }
+
     public void deleteFacility(String id) throws SQLException {  // przyjmuje id
         Connection connection = null;
         PreparedStatement statement = null;

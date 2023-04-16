@@ -130,7 +130,7 @@ public class AdminServlet extends HttpServlet {
         // odczytanie danych z formularza
         int id = Integer.parseInt(request.getParameter("facilityID"));
         String rckikName = request.getParameter("nameInput");
-        String address = request.getParameter("addresseInput");
+        String address = request.getParameter("addressInput");
         String postCode = request.getParameter("postCodeInput");
         String city = request.getParameter("cityInput");
         String phoneNumber = request.getParameter("phoneNumberInput");
@@ -148,25 +148,19 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void loadFacility(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//
-//        // odczytanie id obiektu z formularza
-//        String id = request.getParameter("facilityID");
-//
-//        // pobranie  danych telefonu z BD
-//        Facility facility = dbUtil.getFacility(id); <- jeszcze nie ma takiej metody
-//        Phone phone = dbUtil.getPhone(id);
-//
-//        // przekazanie telefonu do obiektu request
-//        request.setAttribute("FACILITY", facility);
-//
-//        // wyslanie danych do formmularza JSP (update_phone_form)
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/add_facility_form.jsp");
-//        dispatcher.forward(request, response);
+        // odczytanie id obiektu z formularza
+        String id = request.getParameter("facilityID");
+        Facility facility = dbUtil.getFacility(id);
 
+        // przekazanie telefonu do obiektu request
+        request.setAttribute("FACILITY", facility);
+
+        // wyslanie danych do formmularza JSP (update_phone_form)
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/update_facility.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void addFacilities(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         // odczytanie danych z formularza
         String rckikName = request.getParameter("nameInput");
         String address = request.getParameter("addressInput");

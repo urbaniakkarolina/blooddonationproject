@@ -24,7 +24,7 @@
           rel="stylesheet">
   <script src="https://kit.fontawesome.com/f7b616ee3b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="./css/style-update-data.css">
+  <link rel="stylesheet" href="css/style_update_blood_bank.css">
 </head>
 
 <body>
