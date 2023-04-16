@@ -72,14 +72,23 @@ public class ClientServlet extends HttpServlet {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         try {
-
+            String command = request.getParameter("command");
+            command = command == null ? "" : command;
             request.setAttribute("BLOOD_BANK_STOCKS", dbUtil.getBloodBankStocks());
-            // lista obiektow (MVC)
-            listFacilities(request, response);
 
+            switch (command) {
+                case "SEARCH":
+                    searchForFacility(request, response);
+                    break;
+
+                default:
+                    listFacilities(request, response);
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,11 +96,19 @@ public class ClientServlet extends HttpServlet {
 
     private void listFacilities(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // pobranie danych dzieki DBUtil
-        List<Facility> facilityList = dbUtil.getFacilitiesForQuery();
+        List<Facility> facilityList = dbUtil.getAllAvailableFacilities();
 
         request.setAttribute("FACILITIES_LIST", facilityList);
 
         // wyslanie danych do JSP
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/client_view.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void searchForFacility(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String searchTerm = request.getParameter("searchTerm");
+        List<Facility> facilityList = dbUtil.searchForFacility(searchTerm);
+        request.setAttribute("FACILITIES_LIST", facilityList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/client_view.jsp");
         dispatcher.forward(request, response);
     }

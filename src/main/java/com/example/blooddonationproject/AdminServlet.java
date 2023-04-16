@@ -1,6 +1,7 @@
 package com.example.blooddonationproject;
 
 
+import com.example.blooddonationproject.model.BloodBankStock;
 import com.example.blooddonationproject.model.Facility;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +20,7 @@ import java.util.List;
 public class AdminServlet extends HttpServlet {
 
     private DatabaseUtilAdmin dbUtil;
-//    private final String dbUrl = "jdbc:mysql://localhost:3306/blood_donation_centre?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=CET";
+    //    private final String dbUrl = "jdbc:mysql://localhost:3306/blood_donation_centre?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=CET";
     private final String dbUrl = "jdbc:mysql://localhost:3306/blood_donation_centre";
 
     @Override
@@ -51,13 +52,16 @@ public class AdminServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_view.jsp");
 
             List<Facility> facilityList = null;
+            List<BloodBankStock> bloodBankStocks = null;
             try {
-                facilityList = dbUtil.getFacilitiesForQuery();
+                facilityList = dbUtil.getAllAvailableFacilities();
+                bloodBankStocks = dbUtil.getBloodBankStocks();
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             // dodanie listy do obiektu zadania
+            request.setAttribute("BLOOD_BANK_STOCKS", bloodBankStocks);
             request.setAttribute("FACILITIES_LIST", facilityList);
             dispatcher.forward(request, response);
         } else {
@@ -74,16 +78,15 @@ public class AdminServlet extends HttpServlet {
             // odczytanie zadania
             String command = request.getParameter("command");
 
-            if (command == null)
-                command = "LIST";
+            request.setAttribute("BLOOD_BANK_STOCKS", dbUtil.getBloodBankStocks());
 
             switch (command) {
-                case "LIST":
-                    listFacilities(request, response);
-                    break;
-
                 case "HOME_LIST":
                     homeListFacilities(request, response);
+                    break;
+
+                case "SEARCH":
+                    searchForFacility(request, response);
                     break;
 
                 case "ADD":
@@ -104,6 +107,8 @@ public class AdminServlet extends HttpServlet {
 
                 default:
                     listFacilities(request, response);
+                    break;
+
             }
 
         } catch (Exception e) {
@@ -180,7 +185,7 @@ public class AdminServlet extends HttpServlet {
 
     private void listFacilities(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        List<Facility> facilityList = dbUtil.getFacilitiesForQuery();
+        List<Facility> facilityList = dbUtil.getAllAvailableFacilities();
 
         // dodanie listy do obiektu zadania
         request.setAttribute("FACILITIES_LIST", facilityList);
@@ -194,7 +199,7 @@ public class AdminServlet extends HttpServlet {
 
     private void homeListFacilities(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        List<Facility> facilityList = dbUtil.getFacilitiesForQuery();
+        List<Facility> facilityList = dbUtil.getAllAvailableFacilities();
 
         // dodanie listy do obiektu zadania
         request.setAttribute("FACILITIES_LIST", facilityList);
@@ -222,6 +227,14 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
         return status;
+    }
+
+    private void searchForFacility(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String searchTerm = request.getParameter("searchTerm");
+        List<Facility> facilityList = dbUtil.searchForFacility(searchTerm);
+        request.setAttribute("FACILITIES_LIST", facilityList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_view.jsp");
+        dispatcher.forward(request, response);
     }
 }
 

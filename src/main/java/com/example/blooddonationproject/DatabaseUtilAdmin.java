@@ -3,62 +3,12 @@ package com.example.blooddonationproject;
 import com.example.blooddonationproject.model.Facility;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseUtilAdmin extends DatabaseUtil{
     private String url;
-    private String name;
-    private String password;
 
     public DatabaseUtilAdmin(String url) {
-        this.url = url;
-    }
-
-    @Override
-    List<Facility> getFacilitiesForQuery() throws SQLException {
-        List<Facility> foundFacilities = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DriverManager.getConnection(url, name, password);
-            String sql = "select * from facilities";
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-                Facility facility = new Facility(
-                        resultSet.getInt("id"),
-                        resultSet.getString("rckik_name"),
-                        resultSet.getString("address"),
-                        resultSet.getString("post_code"),
-                        resultSet.getString("city"),
-                        resultSet.getString("phone_number"),
-                        resultSet.getString("website")
-                );
-                foundFacilities.add(facility);
-            }
-        } finally {
-            close(connection, statement, resultSet);
-        }
-        return foundFacilities;
-    }
-
-
-    @Override
-    List<Facility> getAllAvailableFacilities() throws SQLException {
-        String availableFacilities = "select * from facilities;";
-
-        return getFacilitiesForQuery();
-    }
-
-    @Override
-    List<Facility> searchForFacility(String searchTerm) throws SQLException {
-        String searchFacilityQuery = "select * from facilities where match(rckik_name, address, post_code, city, phone_number, website)" +
-                " against('" + searchTerm + "' IN NATURAL LANGUAGE MODE);";
-
-        return getFacilitiesForQuery();
+        super(url);
     }
 
     public void addFacility(Facility facility) throws SQLException {

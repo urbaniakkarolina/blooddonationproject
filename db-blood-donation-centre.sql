@@ -8,7 +8,8 @@ create table facilities (
 	post_code char(6) not null,
 	city varchar(255) not null,
 	phone_number varchar(45) not null,
-	website varchar(255) not null
+	website varchar(255) not null,
+	fulltext(rckik_name, address, post_code, city, phone_number, website)
 );
 
 create table blood_types (
